@@ -2,7 +2,6 @@ package shapes.shapes;
 import Jama.Matrix;
 import drawers.PixelDrawer;
 import shapes.abstractshapes.AbstractGraphicsObject;
-import shapes.types.IPointMovable;
 import shapes.utils.Coordinate;
 
 import java.awt.*;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * Интерполяция методом Эрмита.
  */
-public class HermitCurve extends AbstractGraphicsObject implements IPointMovable {
+public class HermitCurve extends AbstractGraphicsObject{
 	private PixelDrawer pd;
 	//Количество значений, которые приниает параметр t
 	private static final int DEFAULT_ITERATION_COUNT	= 20;
@@ -79,39 +78,6 @@ public class HermitCurve extends AbstractGraphicsObject implements IPointMovable
 		this.yList = new ArrayList<Double>();
 	}
 
-	public List<Double> getTList() {
-		return tList;
-	}
-
-	public List<Double> getXList() {
-		return xList;
-	}
-
-	public List<Double> getYList() {
-		return yList;
-	}
-
-	public int getInfoListSize() {
-		return tList.size();
-	}
-
-	public Coordinate getBeginVector() {
-		return beginVector;
-	}
-
-	public Coordinate getEndVector() {
-		return endVector;
-	}
-
-	public void setBeginVector(Coordinate newVector) {
-		beginVector = newVector;
-		calc();
-	}
-
-	public void setEndVector(Coordinate newVector) {
-		endVector = newVector;
-		calc();
-	}
 
 	public void drawLine(int x1, int y1, int x2, int y2) {
 		beginPoint.set(x1, y2);
@@ -127,20 +93,7 @@ public class HermitCurve extends AbstractGraphicsObject implements IPointMovable
 //		}
 	}
 
-	@Override
-	public List<Coordinate> getControlPoints() {
-		List<Coordinate> points = new ArrayList<Coordinate>();
-		points.add(beginPoint);
-		points.add(endPoint);
-		return points;
-	}
 
-	@Override
-	public void setControlPoints(List<Coordinate> points) {
-		beginPoint = points.get(0);
-		endPoint = points.get(1);
-		calc();
-	}
 
 	@Override
 	public boolean processMousePress(int x, int y) {

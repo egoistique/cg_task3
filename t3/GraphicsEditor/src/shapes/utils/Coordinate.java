@@ -6,8 +6,7 @@ import Jama.Matrix;
 
 /**
  * Однородная координата (точка в однородных координатах)
- * 
- * @author Gomon Sergey
+ *
  */
 public class Coordinate implements Comparable, Cloneable  {
 	

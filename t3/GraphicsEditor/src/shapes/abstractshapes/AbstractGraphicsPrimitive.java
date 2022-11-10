@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Gomon Sergey
  * 
  * Базовый класс для графических примитивов. Под примтивом пониается
  * графическйи объект, который рисуется по некоторуму алгоритму, и
@@ -37,10 +36,7 @@ public abstract class AbstractGraphicsPrimitive implements IGraphicsObject {
 	public List<Integer> getY() {
 		return coordinates.getProjection(1);
 	}
-	
-	public int getPointsCount() {
-		return points.size();
-	}
+
 	
 	@Override
 	public void draw(CanvaGraphics g) {

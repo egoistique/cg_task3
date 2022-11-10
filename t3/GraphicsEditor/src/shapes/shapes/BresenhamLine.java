@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author	Gomon Sergey
  * 
  * Класс линии. Координаты линии вычисляются по алгоритму Брезенхема.
  */

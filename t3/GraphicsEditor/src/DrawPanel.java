@@ -17,7 +17,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 
 public class DrawPanel extends JPanel {
-    private int currentX, currentY;
     private final ScreenConverter converter;
     private final Line ox;
     private final Line oy;
@@ -39,21 +38,6 @@ public class DrawPanel extends JPanel {
         timer.start();
 
         params = new HashMap<>();
-//        params.put("A", 1.0);
-//        params.put("B", 1.0);
-//        params.put("C", 1.0);
-//        params.put("D", 1.0);
-//        params.put("W", 1.0);
-//        params.put("F" , 1.0);
-//        params.put("A1", 1.0);
-//        params.put("A2", 1.0);
-//        params.put("F1", 1.0);
-//        params.put("F2", 1.0);
-//        params.put("W1", 1.0);
-//        params.put("W2", 1.0);
-//        params.put("C1", 1.0);
-//        params.put("C2", 1.0);
-//        params.put("T", 1.0);
 
         functions = new ArrayList<>();
         anyFunc = new ArrayList<>();

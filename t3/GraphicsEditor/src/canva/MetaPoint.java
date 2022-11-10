@@ -1,11 +1,5 @@
 package canva;
 
-/**
- * Created by IntelliJ IDEA.
- * User: ZOR
- * Date: 02.10.11
- * Time: 19:04
- */
 public class MetaPoint {
     int x;
     int y;

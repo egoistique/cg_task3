@@ -7,7 +7,6 @@ import shapes.IGraphicsObject;
 import java.awt.*;
 
 /**
- * @author Gomon Sergey
  * 
  * Класс точки, которая отображается на экране (не путать с точкой, координаты
  * которой используются при вычислениях)

@@ -3,7 +3,6 @@ import Jama.Matrix;
 import canva.CanvaGraphics;
 import drawers.PixelDrawer;
 import shapes.abstractshapes.AbstractGraphicsObject;
-import shapes.types.IPointMovable;
 import shapes.utils.Coordinate;
 import shapes.utils.Coordinates;
 
@@ -11,7 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplineCurve extends AbstractGraphicsObject implements IPointMovable {
+public class SplineCurve extends AbstractGraphicsObject{
 	private PixelDrawer pd;
 
 	private static final int DEFAULT_ITERATION_COUNT	= 20;
@@ -89,17 +88,6 @@ public class SplineCurve extends AbstractGraphicsObject implements IPointMovable
 //		for(int i = 0; i < xList.size(); i++){
 //			pd.drawPixel((int) (xList.get(i) / 10), (int) (yList.get(i) / 10), Color.BLACK);
 //		}
-	}
-
-	@Override
-	public List<Coordinate> getControlPoints() {
-		return points.toList();
-	}
-
-	@Override
-	public void setControlPoints(List<Coordinate> points) {
-		this.points = new Coordinates(points);
-		calc();
 	}
 
 	@Override

@@ -3,14 +3,13 @@ package shapes.shapes;
 import Jama.Matrix;
 import drawers.PixelDrawer;
 import shapes.abstractshapes.AbstractGraphicsObject;
-import shapes.types.IPointMovable;
 import shapes.utils.Coordinate;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BezierCurve extends AbstractGraphicsObject implements IPointMovable {
+public class BezierCurve extends AbstractGraphicsObject{
 	private PixelDrawer pd;
 
 	private static final int DEFAULT_ITERATION_COUNT	= 20;
@@ -136,24 +135,6 @@ public class BezierCurve extends AbstractGraphicsObject implements IPointMovable
 		}
 	}
 
-	@Override
-	public List<Coordinate> getControlPoints() {
-		List<Coordinate> points = new ArrayList<Coordinate>();
-		points.add(beginVector);
-		points.add(endVector);
-		points.add(beginPoint);
-		points.add(endPoint);
-		return points;
-	}
-
-	@Override
-	public void setControlPoints(List<Coordinate> points) {
-		beginVector = points.get(0);
-		endVector = points.get(1);
-		beginPoint = points.get(2);
-		endPoint = points.get(3);
-		calc();
-	}
 
 	/**
 	 * Метод осуществялет вычисление координат кривой Безъе

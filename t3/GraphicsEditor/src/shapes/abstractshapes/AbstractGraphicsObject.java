@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
- * @author Gomon Sergey
+ *
  */
 public abstract class AbstractGraphicsObject implements IGraphicsObject {
 	

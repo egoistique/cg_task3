@@ -4,7 +4,7 @@ package shapes;
 import canva.CanvaGraphics;
 
 /**
- * @author Gomon Sergey
+
  * 
  * Интерфейс абстрактной фигуры. Каждая фигура должна реализовывать данный 
  * интерфейс. Через него канва общается с фигурой.
@@ -16,8 +16,7 @@ public interface IGraphicsObject {
 	 * 
 	 * @returns true, если щелчек был успешно обработан. false, если
 	 * щелчек никак не обработан (isComplete() должен вернуть true)
-	 * 
-	 * @see isComplete()
+	 *
      */
 	boolean processMousePress(int x, int y);
 	boolean processMouseRelease(int x, int y);

@@ -4,7 +4,6 @@ package canva;
 import java.awt.*;
 
 /*
- * @author	Gomon Sergey
  * 
  * Класс рисовальщика. Для каждой фигуры в списке, объект класса Canva передает
  * его в метод draw().

@@ -1,7 +1,7 @@
 
 package shapes.abstractshapes;
 
-import shapes.types.IPointMovable;
+
 import shapes.utils.Coordinate;
 
 import java.awt.*;
@@ -9,12 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author	Gomon Sergey
  * 
  * Базовый класс для прямых, которые рисуются разными алгоритмами.
  */
-public abstract class AbstractLine extends AbstractGraphicsPrimitive 
-		implements IPointMovable{
+public abstract class AbstractLine extends AbstractGraphicsPrimitive {
     
 	private Coordinate beginPoint;
 	private Coordinate endPoint;
@@ -26,20 +24,7 @@ public abstract class AbstractLine extends AbstractGraphicsPrimitive
 	
 	protected abstract void calc();
 	
-	@Override
-	public List<Coordinate> getControlPoints() {
-		List<Coordinate> points = new ArrayList<Coordinate>();
-		points.add(beginPoint);
-		points.add(endPoint);
-		return points;
-	}
 
-	@Override
-	public void setControlPoints(List<Coordinate> points) {
-		beginPoint = points.get(0);
-		endPoint = points.get(1);
-		calc();
-	}		
 	
 	protected Coordinate getBeginPoint() {
 		return beginPoint;
@@ -49,21 +34,7 @@ public abstract class AbstractLine extends AbstractGraphicsPrimitive
 		return endPoint;
 	}
 	
-	protected void setBeginPoint(int x, int y) {
-		beginPoint.set(x, y);
-	}
-	
-	protected void setEndPoint(int x, int y) {
-		endPoint.set(x, y);
-	}
-	
-	protected void setBeginPoint(Coordinate c) {
-		beginPoint = c;
-	}
-	
-	protected void setEndPoint(Coordinate c) {
-		endPoint = c;
-	}
+
 	
 	@Override
 	public boolean isComplete() {

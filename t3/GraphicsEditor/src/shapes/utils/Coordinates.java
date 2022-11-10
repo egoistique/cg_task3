@@ -8,8 +8,7 @@ import java.util.List;
 
 /**
  * Контейнер однородных координат
- * 
- * @author  Gomon Sergey
+ *
  */
 public class Coordinates implements Cloneable {
 	

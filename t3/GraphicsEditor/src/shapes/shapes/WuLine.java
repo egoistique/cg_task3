@@ -7,7 +7,6 @@ import java.awt.*;
 
 /**
  *
- * @author Gomon Sergey
  */
 public class WuLine extends AbstractLine {
 
