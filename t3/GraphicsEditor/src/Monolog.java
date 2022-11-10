@@ -1,5 +1,4 @@
 import functions.AnyFunctions;
-import shapes.shapes.BezierCurve;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,6 +14,7 @@ public class Monolog extends JDialog {
     private JButton buttonHermit;
     private JButton buttonSplines;
     private JButton buttonBezier;
+    private JButton buttonClear;
     public static Map<String, Double> params;
     public static ArrayList<AnyFunctions> anyFunctions;
     public static ArrayList<AnyFunctions> besierFunctions;
@@ -75,6 +75,15 @@ public class Monolog extends JDialog {
             }
         });
 
+        buttonClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                anyFunctions.clear();
+                besierFunctions.clear();
+                hermitFunctions.clear();
+                splineFunctions.clear();
+            }
+        });
 
         setModal(true);
     }
