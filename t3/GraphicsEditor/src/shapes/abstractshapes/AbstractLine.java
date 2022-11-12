@@ -36,11 +36,7 @@ public abstract class AbstractLine extends AbstractGraphicsPrimitive {
 	
 
 	
-	@Override
-	public boolean isComplete() {
-		return beginPoint.isCorrect() && endPoint.isCorrect();
-	}		
-	
+
 	@Override
     public boolean processMousePress(int x, int y) {
 		if(!beginPoint.isCorrect()) {
@@ -52,34 +48,7 @@ public abstract class AbstractLine extends AbstractGraphicsPrimitive {
 		return true;
     }
 	
-	@Override
-	public boolean processMouseRelease(int x, int y) {
-		return true;
-	}
 
-	@Override
-	public boolean processMouseMove(int x, int y) {
-		if(!beginPoint.isCorrect()) {
-			beginPoint.set(x, y);
-		} else {
-			endPoint.set(x, y);
-		}
-		calc();
-		return true;		
-	}	
-	
-	@Override
-	public boolean processMouseDoubleClick(int x, int y) {
-		return true;
-	}	
-	
-    protected void plot(int x, int y, boolean xLarger) {
-		if (xLarger) {
-			plot(x, y);
-		} else {
-			plot(y, x);
-		}
-    }
 	
     protected void plot(int x, int y, boolean xLarger, Color c) {
 		if (xLarger) {

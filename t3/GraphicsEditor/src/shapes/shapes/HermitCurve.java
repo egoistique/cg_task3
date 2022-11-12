@@ -65,20 +65,6 @@ public class HermitCurve extends AbstractGraphicsObject{
 		this.yList = new ArrayList<Double>();
 	}
 
-	public HermitCurve() {
-		this.beginPoint = new Coordinate(2);
-		this.endPoint = new Coordinate(2);
-		this.beginVector = new Coordinate(
-				null, DEFAULT_BEGIN_VECTOR_X, DEFAULT_BEGIN_VECTOR_Y);
-		this.endVector = new Coordinate(
-				null, DEFAULT_END_VECTOR_X, DEFAULT_END_VECTOR_Y);
-		this.iterationCount = DEFAULT_ITERATION_COUNT;
-		this.tList = new ArrayList<Double>();
-		this.xList = new ArrayList<Double>();
-		this.yList = new ArrayList<Double>();
-	}
-
-
 	public void drawLine(int x1, int y1, int x2, int y2) {
 		beginPoint.set(x1, y2);
 		endPoint.set(x2, y2);
@@ -93,8 +79,6 @@ public class HermitCurve extends AbstractGraphicsObject{
 //		}
 	}
 
-
-
 	@Override
 	public boolean processMousePress(int x, int y) {
 		if(!beginPoint.isCorrect()) {
@@ -106,35 +90,6 @@ public class HermitCurve extends AbstractGraphicsObject{
 		return false;
 	}
 
-	@Override
-	public boolean processMouseRelease(int x, int y) {
-		return true;
-	}
-
-	@Override
-	public boolean processMouseMove(int x, int y) {
-		if(!beginPoint.isCorrect()) {
-			beginPoint.set(x,y);
-		} else {
-			endPoint.set(x,y);
-		}
-		calc();
-		return false;
-	}
-
-	@Override
-	public boolean processMouseDoubleClick(int x, int y) {
-		return true;
-	}
-
-	@Override
-	public boolean isComplete() {
-		if(beginPoint.isCorrect() && endPoint.isCorrect()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	/**
 	 * Метод осуществляет вычисление координат кривой

@@ -191,43 +191,6 @@ public class DrawPanel extends JPanel {
         biG.dispose();
     }
 
-//    private static void drawFunction(LineDrawer ld, ScreenConverter sc, IFunction f, Map<String, Double> params){
-//        double step = sc.getWidth() / sc.getsWidth();
-//        double x = sc.getX() + 0 * step;
-//        double y = f.compute(x, params);
-//        for(int i = 1; i < sc.getsWidth(); i++) {
-//            double x1 = sc.getX() + i * step;
-//            double y1 = f.compute(x1, params);
-//            if (y1 < sc.getY() && y1 > sc.getY() - sc.getHeight()){
-//                drawLine(ld, sc, new Line(new RealPoint(x, y), new RealPoint(x1,y1)));
-//            }
-//            x = x1;
-//            y = y1;
-//        }
-//    }
-//
-//    private static void drawSpecialFunction(LineDrawer ld, ScreenConverter sc, IFunction f, Map<String, Double> params){
-//        double step = sc.getHeight() / sc.getsHeight();
-//        double y = sc.getY() - 0 * step;
-//        double x = f.compute(y, params);
-//        for(int i = 1; i < sc.getsHeight(); i++) {
-//            double y1 = sc.getY() - i * step;
-//            double x1 = f.compute(y1, params);
-//            if (x1 > sc.getX() && x1 < sc.getX() + sc.getWidth()){
-//                drawLine(ld, sc, new Line(new RealPoint(x, y), new RealPoint(x1,y1)));
-//            }
-//            x = x1;
-//            y = y1;
-//        }
-//    }
-
-    public void paintBezier(BezierCurve bc){
-        drawAnyFunctionBezier(bc, converter, Monolog.anyFunctions.get(Monolog.anyFunctions.size() - 1));
-    }
-
-
-
-
     private static void drawAnyFunction(LineDrawer ld, ScreenConverter sc, AnyFunctions f){
         if(f.defineArg() == 'x'){
             double step = sc.getHeight() / sc.getsHeight();
@@ -263,7 +226,9 @@ public class DrawPanel extends JPanel {
         if(f.defineArg() == 'x'){
             double step = sc.getHeight() / sc.getsHeight();
             double y = sc.getY() - 0 * step;
+            y = y%10 > 5 ? ((y/10)*10)+10 : (y/10)*10;
             double x = f.compute(y);
+            x = x%10 > 5 ? ((x/10)*10)+10 : (x/10)*10;
             for(int i = 1; i < sc.getsHeight(); i++) {
                 double y1 = sc.getY() - i * step;
                 double x1 = f.compute(y1);

@@ -48,33 +48,6 @@ public class BezierCurve extends AbstractGraphicsObject{
 		yList = new ArrayList<Double>();
 	}
 
-	public BezierCurve() {
-		this.beginPoint = new Coordinate(2);
-		this.endPoint = new Coordinate(2);
-		this.beginVector = new Coordinate(null, DEFAULT_BEGIN_VECTOR_X, DEFAULT_BEGIN_VECTOR_Y);
-		this.endVector = new Coordinate(null, DEFAULT_END_VECTOR_X, DEFAULT_END_VECTOR_Y);
-		this.iterationCount = DEFAULT_ITERATION_COUNT;
-		tList = new ArrayList<Double>();
-		xList = new ArrayList<Double>();
-		yList = new ArrayList<Double>();
-	}
-
-	public int getInfoListSize() {
-		return tList.size();
-	}
-
-	public List<Double> getTList() {
-		return tList;
-	}
-
-	public List<Double> getXList() {
-		return xList;
-	}
-
-	public List<Double> getYList() {
-		return yList;
-	}
-
 	public void drawLine(int x1, int y1, int x2, int y2) {
 		beginPoint.set(x1, y2);
 		endPoint.set(x2, y2);
@@ -100,39 +73,6 @@ public class BezierCurve extends AbstractGraphicsObject{
 		}
 		calc();
 		return false;
-	}
-
-
-	@Override
-	public boolean processMouseRelease(int x, int y) {
-		return true;
-	}
-
-	@Override
-	public boolean processMouseMove(int x, int y) {
-		if(!beginPoint.isCorrect()) {
-			beginPoint.set(x,y);
-			beginVector.set(x, y);
-		} else {
-			endPoint.set(x,y);
-			endVector.set(x, y);
-		}
-		calc();
-		return false;
-	}
-
-	@Override
-	public boolean processMouseDoubleClick(int x, int y) {
-		return true;
-	}
-
-	@Override
-	public boolean isComplete() {
-		if(beginPoint.isCorrect() && endPoint.isCorrect()) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 

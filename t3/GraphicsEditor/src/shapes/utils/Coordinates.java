@@ -27,14 +27,7 @@ public class Coordinates implements Cloneable {
 			coord.add(coordinate.clone());
 		}
 	}	
-	
-    public Coordinates(List<Coordinate> coord) {
-		this.coord = new ArrayList<Coordinate>();
-		for(Coordinate coordinate: coord) {
-			this.coord.add(coordinate.clone());
-		}
-    }
-	
+
     public void addPoint(Coordinate coordinate) {
 		coord.add(coordinate.clone());
     }
@@ -66,42 +59,14 @@ public class Coordinates implements Cloneable {
 			return coord.get(coord.size()-1).clone();
 		}
 	}
-	
-	public void removeTop() {
-		if(coord.isEmpty()) {
-			return;
-		} else {
-			coord.remove(coord.size()-1);
-		}
-	}
-	
+
 	public void replaceTop(Coordinate coordinate) {
 		if(!coord.isEmpty()) {
 			coord.remove(coord.size()-1);
 		}
 		coord.add(coordinate.clone());
 	}
-	
-	public int getMin(int i) {
-		int min = POS_INFINITE;
-		for(Coordinate point: coord) {
-			if(point.get(i) < min) {
-				min = point.get(i);
-			}
-		}
-		return min;
-	}
-	
-	public int getMax(int i) {
-		int max = NEG_INFINITE;
-		for(Coordinate point: coord) {
-			if(point.get(i) > max) {
-				max = point.get(i);
-			}
-		}
-		return max;
-	}	
-	
+
     /**
      * Возвращает одну из координат как список целых чисел. 
      * Значения координат округляются до ближайшего целого числа.
@@ -127,35 +92,6 @@ public class Coordinates implements Cloneable {
 		}
 		return list;
 	}
-	
-	public int getCenter(int i) {
-		int center = 0;
-		for(Coordinate coordinate: coord) {
-			center += coordinate.get(i);
-		}
-		
-		return (int) ((double)center/coord.size() + 0.5*Math.signum(center));
-	}
-	
-    /**
-     * Преобразует координаты в соответствии с матрицей преобразования.
-     * После преобразования масштабный коэффициент если и не остается равным
-     * единице, то принимает значение, которое очень близко к единице.
-     * 
-     * @param transformMatrix матрица преобразований
- 
-     */
-    public void applyAffine(Matrix transformMatrix) {
-		for(Coordinate point: coord) {
-			point.applyAffine(transformMatrix);
-		}
-    }
-	
-    public void applyPerspective(Matrix transformMatrix) {
-		for(Coordinate point: coord) {
-			point.applyPerspective(transformMatrix);
-		}
-    }	
 	
 	@Override
 	public Coordinates clone() {

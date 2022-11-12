@@ -32,20 +32,7 @@ public abstract class AbstractGraphicsObject implements IGraphicsObject {
 			line.draw(g);
 		}
 	}
-	
-	public boolean getAntialiasing() {
-		return antialiasing;
-	}	
-	
-	public void setAntialiasing(boolean antialiasing) {
-		this.antialiasing = antialiasing;
-		calc();
-	}
-	
-	public boolean isAntialiasing() {
-		return antialiasing;
-	}
-	
+
 	protected void addPoint(int x, int y) {
 		
 		boolean pushed = false;

@@ -97,7 +97,7 @@ public class WuLine extends AbstractLine {
 		//Вычисление интенсивности первого пикселя
 		int i = Math.abs(err) * 100 / Math.abs(errDec);
 		//Построение точки в первоначальных координатах
-		plot(abstractX, abstractY, xLarger);
+		plot(abstractX, abstractY, Color.PINK);
 
 		/*
 		 *   Цикл, в котором происходит построение прямой. 

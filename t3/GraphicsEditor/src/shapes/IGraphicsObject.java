@@ -19,9 +19,6 @@ public interface IGraphicsObject {
 	 *
      */
 	boolean processMousePress(int x, int y);
-	boolean processMouseRelease(int x, int y);
-	boolean processMouseMove(int x, int y);
-	boolean processMouseDoubleClick(int x, int y);
 	
     /**
     * Данный метод вызывается из метода paintComponent() класса Canva.
@@ -30,9 +27,5 @@ public interface IGraphicsObject {
     */
     void draw(CanvaGraphics g);
 	
-	/**
-	 * @return  true, если фигура готова к прорисовке (есть что 
-	 * прорисовавыть), иначе возвращает false.
-	 */
-	boolean isComplete();
+
 }

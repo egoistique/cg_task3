@@ -40,18 +40,7 @@ public class Coordinate implements Comparable, Cloneable  {
 		correct = true;
 	}
 	
-	public Coordinate(String s, Double... a) {
-		this(a.length);
-		for(int i = 0; i < a.length; i++) {
-			point.set(0, i, a[i]);
-		}
-	}
-	public Coordinate(String s, Number... a) {
-		this(a.length);
-		for(int i = 0; i < a.length; i++) {
-			point.set(0, i, a[i].doubleValue());
-		}
-	}
+
 	
 	/**
 	 * Так как этот класс еще используется для представления векторов,
@@ -59,12 +48,7 @@ public class Coordinate implements Comparable, Cloneable  {
 	 * коэффициент ставится равным 1, т. к. никаких аффинных преобразований
 	 * над векторами не производится.
 	 */
-	public Coordinate minus(Coordinate other) {
-		Coordinate copy = this.clone();
-		copy.point = copy.point.minus(other.point);
-		copy.point.set(0, copy.point.getColumnDimension() - 1, 1);
-		return copy;
-	}
+
 	
 	public Coordinate plus(Coordinate other) {
 		Coordinate copy = this.clone();
@@ -72,17 +56,7 @@ public class Coordinate implements Comparable, Cloneable  {
 		copy.point.set(0, copy.point.getColumnDimension() - 1, 1);
 		return copy;
 	}
-	
-	public Coordinate times(double x) {
-		Coordinate copy = this.clone();
-		copy.point = copy.point.times(x);
-		copy.point.set(0, copy.point.getColumnDimension() - 1, 1);
-		return copy;
-	}	
-	
-	public void reset() {
-		correct = false;
-	}
+
 	
 	public void set(int... a) {
 		for(int i = 0; i < a.length; i++) {
@@ -91,29 +65,13 @@ public class Coordinate implements Comparable, Cloneable  {
 		correct = true;
 	}
 	
-	public void set(double... a) {
-		for(int i = 0; i < a.length; i++) {
-			point.set(0, i, a[i]);
-		}
-		correct = true;
-	}	
+
 	
-	public double getD(int i) {
-		return point.get(0, i)/point.get(0, point.getColumnDimension() - 1);
-	}
-	
+
 	public int get(int i) {
 		return (int)(point.get(0, i)/point.get(0, point.getColumnDimension() - 1) + 0.5*Math.signum(point.get(0, i)));
 	}
-	
-	public boolean isPossitive() {
-		for(int i = 0; i < point.getColumnDimension(); i++) {
-			if(point.get(0, i) < 0) {
-				return false;
-			}
-		}
-		return true;
-	}
+
 	
 	public boolean isCorrect() {
 		return correct;

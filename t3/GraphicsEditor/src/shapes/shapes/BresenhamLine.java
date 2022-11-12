@@ -3,6 +3,7 @@ package shapes.shapes;
 
 import shapes.abstractshapes.AbstractLine;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,39 +36,7 @@ public class BresenhamLine extends AbstractLine {
 		plottedXList.clear();
 		plottedYList.clear();
 	}	
-	
-	public List<Integer> getErrorsList() {
-		return errorsList;
-	}
-	
-	public List<Integer> getRealXList() {
-		return realXList;
-	}	
-	
-	public List<Integer> getRealYList() {
-		return realYList;
-	}	
-	
-	public List<Integer> getPlottedXList() {
-		return plottedXList;
-	}	
-	
-	public List<Integer> getPlottedYList() {
-		return plottedYList;
-	}		
-	
-	public boolean isDirectLine() {
-		if(errorsList.isEmpty()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	public int getInfoListSize() {
-		return errorsList.size();
-	}
-	
+
 	protected void addInfo(int abstractX, int abstractY, 
 			int error, boolean xLarger, boolean plotted) {
 		errorsList.add(error);
@@ -183,7 +152,7 @@ public class BresenhamLine extends AbstractLine {
 		}
 
 		//Построение первой точки
-		plot(abstractX, abstractY, xLarger);
+		plot(abstractX, abstractY, Color.PINK);
 		addInfo(abstractX, abstractY, err, xLarger, true);
 		
 		/*
@@ -214,7 +183,7 @@ public class BresenhamLine extends AbstractLine {
 				err += errInc;
 				abstractX += abstractXInc;
 				t += 1;
-				plot(abstractX, abstractY, xLarger);
+				plot(abstractX, abstractY, Color.PINK);
 				addInfo(abstractX, abstractY, err, xLarger, true);
 			}
 		}
