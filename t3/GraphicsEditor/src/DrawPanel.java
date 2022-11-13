@@ -362,6 +362,7 @@ public class DrawPanel extends JPanel {
     }
 
     private static void drawGrid(LineDrawer ld, ScreenConverter sc, Graphics2D biG) {
+
         Color c = new Color(169, 169, 169);
         int step = 1;
         if (sc.getWidth() > 1000) {
