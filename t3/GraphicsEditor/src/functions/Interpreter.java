@@ -96,6 +96,10 @@ public class Interpreter {
 
         }
 
+        if(operations.empty()){
+            return numbers.pop();
+        }
+
         while (!operations.empty()) {
             double num1 = numbers.pop();
             double num2 = 0;
