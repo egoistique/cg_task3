@@ -1,4 +1,4 @@
-import functions.AnyFunctions;
+import functions.Functions;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,10 +16,10 @@ public class Monolog extends JDialog {
     private JButton buttonBezier;
     private JButton buttonClear;
     public static Map<String, Double> params;
-    public static ArrayList<AnyFunctions> anyFunctions;
-    public static ArrayList<AnyFunctions> besierFunctions;
-    public static ArrayList<AnyFunctions> hermitFunctions;
-    public static ArrayList<AnyFunctions> splineFunctions;
+    public static ArrayList<Functions> anyFunctions;
+    public static ArrayList<Functions> besierFunctions;
+    public static ArrayList<Functions> hermitFunctions;
+    public static ArrayList<Functions> splineFunctions;
 
     private DrawPanel dp = new DrawPanel();
 
@@ -36,7 +36,7 @@ public class Monolog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(textField.getText() != ""){
-                    AnyFunctions f = new AnyFunctions(textField.getText());
+                    Functions f = new Functions(textField.getText());
                     anyFunctions.add(f);
 
                 }
@@ -48,7 +48,7 @@ public class Monolog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(textField.getText() != ""){
-                    AnyFunctions f = new AnyFunctions(textField.getText());
+                    Functions f = new Functions(textField.getText());
                     besierFunctions.add(f);
 
                 }
@@ -58,7 +58,7 @@ public class Monolog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(textField.getText() != ""){
-                    AnyFunctions f = new AnyFunctions(textField.getText());
+                    Functions f = new Functions(textField.getText());
                     hermitFunctions.add(f);
 
                 }
@@ -68,7 +68,7 @@ public class Monolog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(textField.getText() != ""){
-                    AnyFunctions f = new AnyFunctions(textField.getText());
+                    Functions f = new Functions(textField.getText());
                     splineFunctions.add(f);
 
                 }
@@ -89,9 +89,9 @@ public class Monolog extends JDialog {
     }
 
     public static void main(String[] args) {
-        Monolog dialog = new Monolog();
-        dialog.pack();
-        dialog.setVisible(true);
+        Monolog mo = new Monolog();
+        mo.pack();
+        mo.setVisible(true);
         System.exit(0);
     }
 }

@@ -1,13 +1,7 @@
-
 package shapes.utils;
-
 import Jama.Matrix;
 
 
-/**
- * Однородная координата (точка в однородных координатах)
- *
- */
 public class Coordinate implements Comparable, Cloneable  {
 	
 	private static final double EPSILON = 0.0000001f;
@@ -42,12 +36,6 @@ public class Coordinate implements Comparable, Cloneable  {
 	
 
 	
-	/**
-	 * Так как этот класс еще используется для представления векторов,
-	 * что не есть гуд, но выбора особого не было, то массштабный
-	 * коэффициент ставится равным 1, т. к. никаких аффинных преобразований
-	 * над векторами не производится.
-	 */
 
 	
 	public Coordinate plus(Coordinate other) {

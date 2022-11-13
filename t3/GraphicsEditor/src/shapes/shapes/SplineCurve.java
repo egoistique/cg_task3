@@ -1,9 +1,8 @@
 package shapes.shapes;
 
 import Jama.Matrix;
-import canva.CanvaGraphics;
 import drawers.PixelDrawer;
-import shapes.abstractshapes.AbstractGraphicsObject;
+import shapes.abstracts.AbstractGraphicsObject;
 import shapes.utils.Coordinate;
 import shapes.utils.Coordinates;
 
@@ -64,22 +63,7 @@ public class SplineCurve extends AbstractGraphicsObject {
 //		}
     }
 
-    @Override
-    public boolean processMousePress(int x, int y) {
-        if (!complete) {
-            Coordinate coordinate = new Coordinate(null, x, y);
-            points.addPoint(coordinate);
-            calc();
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-
-    /**
-     * Метод осуществляет вычисление координат кривой
-     */
     @Override
     protected void calc() {
 

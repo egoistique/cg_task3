@@ -2,10 +2,10 @@ package functions;
 
 import java.util.Arrays;
 
-public class AnyFunctions{
+public class Functions {
     private String str;
 
-    public AnyFunctions(String str) {
+    public Functions(String str) {
         this.str = str;
     }
 
@@ -19,7 +19,7 @@ public class AnyFunctions{
     }
 
     public double compute(double arg) {
-        Interpreter interpreter = new Interpreter();
+        Parser interpreter = new Parser();
         char[] c = str.toCharArray();
         int i = 0;
         while(c[i] != '='){

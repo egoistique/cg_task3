@@ -11,7 +11,6 @@ public class BresenhamLineDrawer implements LineDrawer{
 
     private int sign(int x) {
         return Integer.compare(x, 0);
-        // x равен нулю -> 0 ; x < 0 -> -1, x > 0 -> 1
     }
 
     public void drawLine(int x1, int y1, int x2, int y2, Color c) {

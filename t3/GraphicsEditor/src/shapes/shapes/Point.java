@@ -2,16 +2,11 @@
 package shapes.shapes;
 
 import canva.CanvaGraphics;
-import shapes.IGraphicsObject;
 
 import java.awt.*;
 
-/**
- * 
- * Класс точки, которая отображается на экране (не путать с точкой, координаты
- * которой используются при вычислениях)
- */
-public class Point implements IGraphicsObject {
+
+public class Point {
 	public int x;
 	public int y;
 	private Color color;
@@ -31,22 +26,8 @@ public class Point implements IGraphicsObject {
 	}
 
 
-    @Override
-	public boolean processMousePress(int x, int y) {
-		this.x = x;
-		this.y = y;
-		return true;
-	}
-
-	
-	@Override
 	public void draw(CanvaGraphics g) {
 		g.drawPoint(x, y, color);
 	}
 
-
-    @Override
-    public String toString() {
-        return "("+x+","+y+")";
-    }
 }

@@ -2,7 +2,7 @@
 package shapes.shapes;
 import Jama.Matrix;
 import drawers.PixelDrawer;
-import shapes.abstractshapes.AbstractGraphicsObject;
+import shapes.abstracts.AbstractGraphicsObject;
 import shapes.utils.Coordinate;
 
 import java.awt.*;
@@ -62,20 +62,6 @@ public class BezierCurve extends AbstractGraphicsObject{
 //		}
 	}
 
-	@Override
-	public boolean processMousePress(int x, int y) {
-		if(!beginPoint.isCorrect()) {
-			beginPoint.set(x,y);
-			beginVector.set(x, y);
-		} else {
-			endPoint.set(x,y);
-			endVector.set(x, y);
-		}
-		calc();
-		return false;
-	}
-
-
 	/**
 	 * Метод осуществялет вычисление координат кривой Безъе
 	 */
@@ -118,4 +104,6 @@ public class BezierCurve extends AbstractGraphicsObject{
 		}
 
 	}
+
+
 }

@@ -1,10 +1,9 @@
 
-package shapes.abstractshapes;
+package shapes.abstracts;
 
 import canva.CanvaGraphics;
-import shapes.IGraphicsObject;
-import shapes.shapes.BresenhamLine;
-import shapes.shapes.WuLine;
+
+
 import shapes.utils.Coordinate;
 import shapes.utils.Coordinates;
 
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  *
  */
-public abstract class AbstractGraphicsObject implements IGraphicsObject {
+public abstract class AbstractGraphicsObject {
 	
 	private Coordinates coordinates;
 	private List<AbstractLine> lines;
@@ -26,7 +25,7 @@ public abstract class AbstractGraphicsObject implements IGraphicsObject {
 		antialiasing = true;
 	}
 	
-	@Override
+
 	public void draw(CanvaGraphics g) {
 		for(AbstractLine line: lines) {
 			line.draw(g);
@@ -34,28 +33,11 @@ public abstract class AbstractGraphicsObject implements IGraphicsObject {
 	}
 
 	protected void addPoint(int x, int y) {
-		
 		boolean pushed = false;
 		if(coordinates.isEmpty()) {
 			coordinates.addPoint(new Coordinate(null, x, y));
 			pushed = true;
 		}
-		if(!coordinates.isEmpty()) {
-			if(antialiasing) {
-				AbstractLine line = new WuLine();
-				line.processMousePress(coordinates.getTop().get(0), 
-						coordinates.getTop().get(1));
-				line.processMousePress((int)(x), (int)(y));				
-				lines.add(line);				
-			} else {
-				AbstractLine line = new BresenhamLine();
-				line.processMousePress(coordinates.getTop().get(0), 
-						coordinates.getTop().get(1));
-				line.processMousePress((int)(x), (int)(y));				
-				lines.add(line);
-			}
-		}
-		
 		if(!pushed) {
 			coordinates.addPoint(new Coordinate(null, x, y));
 		}

@@ -1,8 +1,7 @@
 import drawers.BresenhamLineDrawer;
 import drawers.GraphicsPixelDrawer;
 import drawers.LineDrawer;
-import functions.AnyFunctions;
-import functions.IFunction;
+import functions.Functions;
 import shapes.shapes.BezierCurve;
 import shapes.shapes.HermitCurve;
 import shapes.shapes.SplineCurve;
@@ -12,9 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashSet;
-import java.util.Map;
 
 public class DrawPanel extends JPanel {
     private final ScreenConverter converter;
@@ -22,10 +19,8 @@ public class DrawPanel extends JPanel {
     private final Line oy;
     private final Line current;
     private Point lastP;
-    private ArrayList<IFunction> functions;
     public static ArrayList<Color> colors = new ArrayList<>();
-    private Map<String, Double> params;
-    private ArrayList<AnyFunctions> anyFunc;
+    private ArrayList<Functions> func;
     private Timer timer;
 
 
@@ -38,20 +33,9 @@ public class DrawPanel extends JPanel {
         });
         timer.start();
 
-        params = new HashMap<>();
+        func = new ArrayList<>();
 
-        functions = new ArrayList<>();
-        anyFunc = new ArrayList<>();
-
-
-        colors.add(Color.RED);
-        colors.add(Color.BLUE);
-        colors.add(Color.ORANGE);
-        colors.add(Color.YELLOW);
-        colors.add(Color.GREEN);
-        colors.add(Color.PINK);
         colors.add(Color.BLACK);
-
 
         converter = new ScreenConverter(800, 600, -2, 2, 4, 4);
         ox = new Line(new RealPoint(-converter.getsWidth(), 0), new RealPoint(converter.getsWidth(), 0));
@@ -145,20 +129,8 @@ public class DrawPanel extends JPanel {
         SplineCurve sc = new SplineCurve(new GraphicsPixelDrawer(biG));
 
         biG.setColor(Color.BLACK);
-        //drawLine(ld,converter,ox);
-        //drawLine(ld,converter,oy);
         drawCoord(ld, converter);
         drawGrid(ld, converter, biG);
-
-
-//        for(int i = 0; i < functions.size(); i++){
-//            biG.setColor(colors.get(i%7));
-//            if(functions.get(i) instanceof SpecialFunction){
-//                drawSpecialFunction(ld, converter, functions.get(i), Monolog.params);
-//            } else {
-//                drawFunction(ld, converter, functions.get(i), Monolog.params);
-//            }
-//        }
 
         //это если нужно чтобы было несколько функций на одном экране
         for (int i = 0; i < Monolog.anyFunctions.size(); i++) {
@@ -177,22 +149,18 @@ public class DrawPanel extends JPanel {
             drawAnyFunctionSpline(sc, converter, Monolog.splineFunctions.get(i));
         }
 
-
-        //drawAnyFunctionBezier(bc, converter, Monolog.anyFunctions.get(Monolog.anyFunctions.size() - 1));
-
-
         g2d.drawImage(bi, 0, 0, null);
         biG.dispose();
     }
 
-    private static void drawAnyFunction(LineDrawer ld, ScreenConverter sc, AnyFunctions f) {
+    private static void drawAnyFunction(LineDrawer ld, ScreenConverter sc, Functions f) {
         Color c;
         if (f.defineArg() == 'x') {
             double step = sc.getHeight() / sc.getsHeight();
             double y = sc.getY() - 0 * step;
             double x = f.compute(y);
             for (int i = 1; i < sc.getsHeight(); i++) {
-                c = (colors.get(6));
+                c = (colors.get(0));
                 double y1 = sc.getY() - i * step;
                 double x1 = f.compute(y1);
                 if (x1 > sc.getX() && x1 < sc.getX() + sc.getWidth()) {
@@ -207,7 +175,7 @@ public class DrawPanel extends JPanel {
             double x = sc.getX() + 0 * step;
             double y = f.compute(x);
             for (int i = 1; i < sc.getsWidth(); i++) {
-                c = (colors.get(6));
+                c = (colors.get(0));
                 double x1 = sc.getX() + i * step;
                 double y1 = f.compute(x1);
                 if (y1 < sc.getY() && y1 > sc.getY() - sc.getHeight()) {
@@ -219,7 +187,7 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    private static void drawAnyFunctionBezier(BezierCurve bc, ScreenConverter sc, AnyFunctions f) {
+    private static void drawAnyFunctionBezier(BezierCurve bc, ScreenConverter sc, Functions f) {
         if (f.defineArg() == 'x') {
             double step = sc.getHeight() / sc.getsHeight();
             double y = sc.getY() - 0 * step;
@@ -252,7 +220,7 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    private static void drawAnyFunctionHermit(HermitCurve hc, ScreenConverter sc, AnyFunctions f) {
+    private static void drawAnyFunctionHermit(HermitCurve hc, ScreenConverter sc, Functions f) {
         if (f.defineArg() == 'x') {
             double step = sc.getHeight() / sc.getsHeight();
             double y = sc.getY() - 0 * step;
@@ -283,7 +251,7 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    private static void drawAnyFunctionSpline(SplineCurve splineCurve, ScreenConverter sc, AnyFunctions f) {
+    private static void drawAnyFunctionSpline(SplineCurve splineCurve, ScreenConverter sc, Functions f) {
         if (f.defineArg() == 'x') {
             double step = sc.getHeight() / sc.getsHeight();
             double y = sc.getY() - 0 * step;
@@ -445,7 +413,6 @@ public class DrawPanel extends JPanel {
     private static void drawLineSpline(SplineCurve splineCurve, ScreenConverter sc, Line l1, Line l2) {
         ScreenPoint p1 = sc.r2s(l1.getP1());
         ScreenPoint p2 = sc.r2s(l1.getP2());
-
         ScreenPoint p3 = sc.r2s(l2.getP1());
         ScreenPoint p4 = sc.r2s(l2.getP2());
 

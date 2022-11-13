@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class Interpreter {
+public class Parser {
     private Map<Character, Integer> priority;
 
-    public Interpreter() {
+    public Parser() {
         priority = new HashMap<>();
         priority.put('+', 1);
         priority.put('-', 1);
