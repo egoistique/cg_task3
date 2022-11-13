@@ -78,7 +78,12 @@ public class Interpreter {
         }
 
         while (!operations.empty()) {
-            numbers.add(doOperation(numbers.pop(), numbers.pop(), operations.pop()));
+            double num1 = numbers.pop();
+            double num2 = 0;
+            if (numbers.size() != 0) {
+                num2 = numbers.pop();
+            }
+            numbers.add(doOperation(num1, num2, operations.pop()));
         }
         result = numbers.pop();
 
