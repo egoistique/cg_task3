@@ -158,11 +158,11 @@ public class DrawPanel extends JPanel {
         if (f.defineArg() == 'x') {
             double step = sc.getHeight() / sc.getsHeight();
             double y = sc.getY() - 0 * step;
-            double x = f.compute(y);
+            double x = f.calculate(y);
             for (int i = 1; i < sc.getsHeight(); i++) {
                 c = (colors.get(0));
                 double y1 = sc.getY() - i * step;
-                double x1 = f.compute(y1);
+                double x1 = f.calculate(y1);
                 if (x1 > sc.getX() && x1 < sc.getX() + sc.getWidth()) {
                     drawLine(ld, sc, new Line(new RealPoint(x, y), new RealPoint(x1, y1)), c);
                 }
@@ -173,11 +173,11 @@ public class DrawPanel extends JPanel {
         if (f.defineArg() == 'y') {
             double step = sc.getWidth() / sc.getsWidth();
             double x = sc.getX() + 0 * step;
-            double y = f.compute(x);
+            double y = f.calculate(x);
             for (int i = 1; i < sc.getsWidth(); i++) {
                 c = (colors.get(0));
                 double x1 = sc.getX() + i * step;
-                double y1 = f.compute(x1);
+                double y1 = f.calculate(x1);
                 if (y1 < sc.getY() && y1 > sc.getY() - sc.getHeight()) {
                     drawLine(ld, sc, new Line(new RealPoint(x, y), new RealPoint(x1, y1)), c);
                 }
@@ -187,32 +187,32 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    private static void drawAnyFunctionBezier(BezierCurve bc, ScreenConverter sc, Functions f) {
+    private static void drawAnyFunctionBezier(BezierCurve bc, ScreenConverter screenConverter, Functions f) {
         if (f.defineArg() == 'x') {
-            double step = sc.getHeight() / sc.getsHeight();
-            double y = sc.getY() - 0 * step;
+            double step = screenConverter.getHeight() / screenConverter.getsHeight();
+            double y = screenConverter.getY() - 0 * step;
             y = y % 10 > 5 ? ((y / 10) * 10) + 10 : (y / 10) * 10;
-            double x = f.compute(y);
+            double x = f.calculate(y);
             x = x % 10 > 5 ? ((x / 10) * 10) + 10 : (x / 10) * 10;
-            for (int i = 1; i < sc.getsHeight(); i++) {
-                double y1 = sc.getY() - i * step;
-                double x1 = f.compute(y1);
-                if (x1 > sc.getX() && x1 < sc.getX() + sc.getWidth()) {
-                    drawLineBezier(bc, sc, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
+            for (int i = 1; i < screenConverter.getsHeight(); i++) {
+                double y1 = screenConverter.getY() - i * step;
+                double x1 = f.calculate(y1);
+                if (x1 > screenConverter.getX() && x1 < screenConverter.getX() + screenConverter.getWidth()) {
+                    drawLineBezier(bc, screenConverter, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
                 }
                 x = x1;
                 y = y1;
             }
         }
         if (f.defineArg() == 'y') {
-            double step = sc.getWidth() / sc.getsWidth();
-            double x = sc.getX() + 0 * step;
-            double y = f.compute(x);
-            for (int i = 1; i < sc.getsWidth(); i++) {
-                double x1 = sc.getX() + i * step;
-                double y1 = f.compute(x1);
-                if (y1 < sc.getY() && y1 > sc.getY() - sc.getHeight()) {
-                    drawLineBezier(bc, sc, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
+            double step = screenConverter.getWidth() / screenConverter.getsWidth();
+            double x = screenConverter.getX() + 0 * step;
+            double y = f.calculate(x);
+            for (int i = 1; i < screenConverter.getsWidth(); i++) {
+                double x1 = screenConverter.getX() + i * step;
+                double y1 = f.calculate(x1);
+                if (y1 < screenConverter.getY() && y1 > screenConverter.getY() - screenConverter.getHeight()) {
+                    drawLineBezier(bc, screenConverter, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
                 }
                 x = x1;
                 y = y1;
@@ -220,30 +220,30 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    private static void drawAnyFunctionHermit(HermitCurve hc, ScreenConverter sc, Functions f) {
+    private static void drawAnyFunctionHermit(HermitCurve hc, ScreenConverter screenConverter, Functions f) {
         if (f.defineArg() == 'x') {
-            double step = sc.getHeight() / sc.getsHeight();
-            double y = sc.getY() - 0 * step;
-            double x = f.compute(y);
-            for (int i = 1; i < sc.getsHeight(); i++) {
-                double y1 = sc.getY() - i * step;
-                double x1 = f.compute(y1);
-                if (x1 > sc.getX() && x1 < sc.getX() + sc.getWidth()) {
-                    drawLineHermit(hc, sc, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
+            double step = screenConverter.getHeight() / screenConverter.getsHeight();
+            double y = screenConverter.getY() - 0 * step;
+            double x = f.calculate(y);
+            for (int i = 1; i < screenConverter.getsHeight(); i++) {
+                double y1 = screenConverter.getY() - i * step;
+                double x1 = f.calculate(y1);
+                if (x1 > screenConverter.getX() && x1 < screenConverter.getX() + screenConverter.getWidth()) {
+                    drawLineHermit(hc, screenConverter, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
                 }
                 x = x1;
                 y = y1;
             }
         }
         if (f.defineArg() == 'y') {
-            double step = sc.getWidth() / sc.getsWidth();
-            double x = sc.getX() + 0 * step;
-            double y = f.compute(x);
-            for (int i = 1; i < sc.getsWidth(); i++) {
-                double x1 = sc.getX() + i * step;
-                double y1 = f.compute(x1);
-                if (y1 < sc.getY() && y1 > sc.getY() - sc.getHeight()) {
-                    drawLineHermit(hc, sc, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
+            double step = screenConverter.getWidth() / screenConverter.getsWidth();
+            double x = screenConverter.getX() + 0 * step;
+            double y = f.calculate(x);
+            for (int i = 1; i < screenConverter.getsWidth(); i++) {
+                double x1 = screenConverter.getX() + i * step;
+                double y1 = f.calculate(x1);
+                if (y1 < screenConverter.getY() && y1 > screenConverter.getY() - screenConverter.getHeight()) {
+                    drawLineHermit(hc, screenConverter, new Line(new RealPoint(x, y), new RealPoint(x1, y1)));
                 }
                 x = x1;
                 y = y1;
@@ -251,22 +251,22 @@ public class DrawPanel extends JPanel {
         }
     }
 
-    private static void drawAnyFunctionSpline(SplineCurve splineCurve, ScreenConverter sc, Functions f) {
+    private static void drawAnyFunctionSpline(SplineCurve splineCurve, ScreenConverter screenConverter, Functions f) {
         if (f.defineArg() == 'x') {
-            double step = sc.getHeight() / sc.getsHeight();
-            double y = sc.getY() - 0 * step;
-            double x = f.compute(y);
+            double step = screenConverter.getHeight() / screenConverter.getsHeight();
+            double y = screenConverter.getY() - 0 * step;
+            double x = f.calculate(y);
             ArrayList<RealPoint> points = new ArrayList<>();
-            for (int i = 1; i < sc.getsHeight(); i++) {
+            for (int i = 1; i < screenConverter.getsHeight(); i++) {
                 points.add(new RealPoint(x, y));
-                double y1 = sc.getY() - i * step;
-                double x1 = f.compute(y1);
+                double y1 = screenConverter.getY() - i * step;
+                double x1 = f.calculate(y1);
                 points.add(new RealPoint(x1, y1));
 
                 if (i % 3 == 0) {
                     points = new ArrayList<RealPoint>(new LinkedHashSet<RealPoint>(points));
-                    if (x1 > sc.getX() && x1 < sc.getX() + sc.getWidth()) {
-                        drawLineSpline(splineCurve, sc, new Line(new RealPoint(points.get(0).getX(), points.get(0).getY()),
+                    if (x1 > screenConverter.getX() && x1 < screenConverter.getX() + screenConverter.getWidth()) {
+                        drawLineSpline(splineCurve, screenConverter, new Line(new RealPoint(points.get(0).getX(), points.get(0).getY()),
                                         new RealPoint(points.get(1).getX(), points.get(1).getY())),
                                 new Line(new RealPoint(points.get(4).getX(), points.get(2).getY()),
                                         new RealPoint(points.get(5).getX(), points.get(5).getY())));
@@ -278,19 +278,19 @@ public class DrawPanel extends JPanel {
             }
         }
         if (f.defineArg() == 'y') {
-            double step = sc.getWidth() / sc.getsWidth();
-            double x = sc.getX() + 0 * step;
-            double y = f.compute(x);
+            double step = screenConverter.getWidth() / screenConverter.getsWidth();
+            double x = screenConverter.getX() + 0 * step;
+            double y = f.calculate(x);
             ArrayList<RealPoint> points = new ArrayList<>();
-            for (int i = 1; i < sc.getsWidth(); i++) {
+            for (int i = 1; i < screenConverter.getsWidth(); i++) {
                 points.add(new RealPoint(x, y));
-                double x1 = sc.getX() + i * step;
-                double y1 = f.compute(x1);
+                double x1 = screenConverter.getX() + i * step*10;
+                double y1 = f.calculate(x1);
                 points.add(new RealPoint(x1, y1));
                 if (i % 3 == 0) {
                     points = new ArrayList<RealPoint>(new LinkedHashSet<RealPoint>(points));
-                    if (y1 < sc.getY() && y1 > sc.getY() - sc.getHeight()) {
-                        drawLineSpline(splineCurve, sc, new Line(new RealPoint(points.get(0).getX(), points.get(0).getY()),
+                    if (y1 < screenConverter.getY() && y1 > screenConverter.getY() - screenConverter.getHeight()) {
+                        drawLineSpline(splineCurve, screenConverter, new Line(new RealPoint(points.get(0).getX(), points.get(0).getY()),
                                         new RealPoint(points.get(1).getX(), points.get(1).getY())),
                                 new Line(new RealPoint(points.get(4).getX(), points.get(4).getY()),
                                         new RealPoint(points.get(5).getX(), points.get(5).getY())));

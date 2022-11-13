@@ -18,15 +18,15 @@ public class Functions {
         return c[i];
     }
 
-    public double compute(double arg) {
-        Parser interpreter = new Parser();
+    public double calculate(double arg) {
+        Parser parser = new Parser();
         char[] c = str.toCharArray();
         int i = 0;
         while(c[i] != '='){
             i++;
         }
         char[] c1 = Arrays.copyOfRange(c, i + 1, c.length);
-        return interpreter.compute(new String(c1), arg);
+        return parser.calculate(new String(c1), arg);
     }
 
 }

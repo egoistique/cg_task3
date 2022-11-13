@@ -16,7 +16,7 @@ public class Parser {
         priority.put('^', 3);
     }
 
-    public double compute(String str, double arg) {
+    public double calculate(String str, double arg) {
         double result = 0;
         char[] c = str.toCharArray();
         Stack<Double> numbers = new Stack<>();
@@ -37,7 +37,7 @@ public class Parser {
                     s += c[i];
                     i++;
                 }
-                numbers.add(Math.sin(compute(s, arg)));
+                numbers.add(Math.sin(calculate(s, arg)));
             } else if (i + 2 < c.length && c[i] == 'c' && c[i + 1] == 'o' && c[i + 2] == 's') {
                 String s = "";
                 i += 4;
@@ -45,7 +45,7 @@ public class Parser {
                     s += c[i];
                     i++;
                 }
-                numbers.add(Math.cos(compute(s, arg)));
+                numbers.add(Math.cos(calculate(s, arg)));
             } else if (i + 2 < c.length && c[i] == 'l' && c[i + 1] == 'n') {
                 String s = "";
                 i += 3;
@@ -53,7 +53,7 @@ public class Parser {
                     s += c[i];
                     i++;
                 }
-                numbers.add(Math.log(compute(s, arg)));
+                numbers.add(Math.log(calculate(s, arg)));
             } else if (i + 2 < c.length && c[i] == 'l' && c[i + 1] == 'o' && c[i + 2] == 'g') {
                 String s = "";
                 i += 4;
@@ -61,7 +61,7 @@ public class Parser {
                     s += c[i];
                     i++;
                 }
-                numbers.add(Math.log10(compute(s, arg)));
+                numbers.add(Math.log10(calculate(s, arg)));
             } else if (c[i] == 'x' || c[i] == 'y') {
                 numbers.add(arg);
             } else if (Character.isDigit(c[i])) {
@@ -80,7 +80,7 @@ public class Parser {
                     s += c[i];
                     i++;
                 }
-                numbers.add(compute(s, arg));
+                numbers.add(calculate(s, arg));
             } else {
                 if (operations.empty()) {
                     operations.add(c[i]);
