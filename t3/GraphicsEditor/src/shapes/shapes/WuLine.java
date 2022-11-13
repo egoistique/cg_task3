@@ -5,9 +5,6 @@ import shapes.abstractshapes.AbstractLine;
 
 import java.awt.*;
 
-/**
- *
- */
 public class WuLine extends AbstractLine {
 
 	@Override

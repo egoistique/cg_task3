@@ -15,7 +15,7 @@ public class WuLineDrawer implements LineDrawer {
     }
 
     @Override
-    public void drawLine(int x1, int y1, int x2, int y2) {
+    public void drawLine(int x1, int y1, int x2, int y2, Color c) {
         if (x2 < x1) {
             int t = x1;
             x1 = x2;
@@ -30,7 +30,7 @@ public class WuLineDrawer implements LineDrawer {
 
         if (dy == 0) {
             for (int i = 0; i <= dx; i++) {
-                pd.drawPixel(x1 + i, y2, Color.BLACK);
+                pd.drawPixel(x1 + i, y2, c);
             }
         }
 
@@ -70,7 +70,7 @@ public class WuLineDrawer implements LineDrawer {
                 }
                 pixX += gradient;
             }
-            pd.drawPixel(x2, y2, Color.BLACK);
+            pd.drawPixel(x2, y2, c);
         }
 
         if(y2 < y1){
@@ -127,7 +127,7 @@ public class WuLineDrawer implements LineDrawer {
                 }
                 interx += gradient;
             }
-            pd.drawPixel(x2, y2, Color.BLACK);
+            pd.drawPixel(x2, y2, c);
         }
     }
 }

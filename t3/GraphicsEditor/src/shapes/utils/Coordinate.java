@@ -66,8 +66,6 @@ public class Coordinate implements Comparable, Cloneable  {
 	}
 	
 
-	
-
 	public int get(int i) {
 		return (int)(point.get(0, i)/point.get(0, point.getColumnDimension() - 1) + 0.5*Math.signum(point.get(0, i)));
 	}
@@ -76,27 +74,7 @@ public class Coordinate implements Comparable, Cloneable  {
 	public boolean isCorrect() {
 		return correct;
 	}
-	
-    public void applyAffine(Matrix transformMatrix) {
-		point = point.times(transformMatrix);
-    }
-	
-	public void applyPerspective(Matrix transformMatrix) {
-		
-		//Если точка явялется бесконечно удаленной, то просто находит её
-		//проекцию. Работает только для перспективы вдоль OZ
-		
-		if(Math.abs(point.get(0, 2) + 0.5*Math.signum(point.get(0,2))) < 1 ) {
-			double d = 1/transformMatrix.get(2, 3);
-			point.set(0, 0, 0);
-			point.set(0, 1, 0);
-			point.set(0, 2, d);
-			point.set(0, 3, 1);
-			
-		}
-		point = point.times(transformMatrix);
-    }
-	
+
 	@Override
 	public int compareTo(Object o) {
 		Coordinate other = (Coordinate)o;
