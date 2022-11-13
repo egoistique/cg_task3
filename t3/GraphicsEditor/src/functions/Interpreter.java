@@ -27,6 +27,9 @@ public class Interpreter {
                 continue;
             } else if (c[i] == 'e') {
                 numbers.add(Math.E);
+            } else if (c[i] == 'p' && c[i + 1] == 'i') {
+                i += 1;
+                numbers.add(Math.PI);
             } else if (i + 2 < c.length && c[i] == 's' && c[i + 1] == 'i' && c[i + 2] == 'n') {
                 String s = "";
                 i += 4;
@@ -43,6 +46,22 @@ public class Interpreter {
                     i++;
                 }
                 numbers.add(Math.cos(compute(s, arg)));
+            } else if (i + 2 < c.length && c[i] == 'l' && c[i + 1] == 'n') {
+                String s = "";
+                i += 3;
+                while (i < c.length && c[i] != ')') {
+                    s += c[i];
+                    i++;
+                }
+                numbers.add(Math.log(compute(s, arg)));
+            } else if (i + 2 < c.length && c[i] == 'l' && c[i + 1] == 'o' && c[i + 2] == 'g') {
+                String s = "";
+                i += 4;
+                while (i < c.length && c[i] != ')') {
+                    s += c[i];
+                    i++;
+                }
+                numbers.add(Math.log10(compute(s, arg)));
             } else if (c[i] == 'x' || c[i] == 'y') {
                 numbers.add(arg);
             } else if (Character.isDigit(c[i])) {
