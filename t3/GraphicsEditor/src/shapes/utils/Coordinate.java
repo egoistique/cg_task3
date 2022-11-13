@@ -33,32 +33,18 @@ public class Coordinate implements Comparable, Cloneable  {
 		}
 		correct = true;
 	}
-	
 
-	
-
-	
-	public Coordinate plus(Coordinate other) {
-		Coordinate copy = this.clone();
-		copy.point = copy.point.plus(other.point);
-		copy.point.set(0, copy.point.getColumnDimension() - 1, 1);
-		return copy;
-	}
-
-	
 	public void set(int... a) {
 		for(int i = 0; i < a.length; i++) {
 			point.set(0, i, a[i]);
 		}
 		correct = true;
 	}
-	
 
 	public int get(int i) {
 		return (int)(point.get(0, i)/point.get(0, point.getColumnDimension() - 1) + 0.5*Math.signum(point.get(0, i)));
 	}
 
-	
 	public boolean isCorrect() {
 		return correct;
 	}
@@ -82,17 +68,6 @@ public class Coordinate implements Comparable, Cloneable  {
 	@Override
 	public Coordinate clone() {
 		return new Coordinate(this);
-	}	
-	
-	@Override
-	public String toString() {
-		String res = "(";
-		for(int i = 0; i < point.getColumnDimension(); i++) {
-			res += point.get(0, i);
-			if(i != point.getColumnDimension() - 1) {
-				res += "\t";
-			}
-		}
-		return res + ")";
 	}
+
 }

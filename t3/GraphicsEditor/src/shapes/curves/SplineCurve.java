@@ -1,8 +1,7 @@
-package shapes.shapes;
+package shapes.curves;
 
 import Jama.Matrix;
 import drawers.PixelDrawer;
-import shapes.abstracts.AbstractGraphicsObject;
 import shapes.utils.Coordinate;
 import shapes.utils.Coordinates;
 
@@ -10,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplineCurve extends AbstractGraphicsObject {
+public class SplineCurve extends Curve {
     private PixelDrawer pd;
 
     private static final int DEFAULT_ITERATION_COUNT = 20;
@@ -22,7 +21,7 @@ public class SplineCurve extends AbstractGraphicsObject {
             {-3, 0, 3, 0},
             {1, 4, 1, 0}}, 4, 4);
 
-    //Точки, которые апроксимируются сплайном
+    //Точки
     private Coordinates points;
     private int iterationCount;
     boolean complete;
@@ -76,7 +75,7 @@ public class SplineCurve extends AbstractGraphicsObject {
             return;
         }
 
-        //Кривая разбивается на отрезки кривой между соседними точками
+        //Кривая разбивается на отрезки
         for (int j = 1; j < points.size() - 2; j++) {
 
             //Вектор Эрмитовой геометрии

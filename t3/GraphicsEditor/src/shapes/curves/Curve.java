@@ -1,36 +1,17 @@
 
-package shapes.abstracts;
-
-import canva.CanvaGraphics;
-
+package shapes.curves;
 
 import shapes.utils.Coordinate;
 import shapes.utils.Coordinates;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- *
- */
-public abstract class AbstractGraphicsObject {
+public abstract class Curve {
 	
 	private Coordinates coordinates;
-	private List<AbstractLine> lines;
-	boolean antialiasing;
 
-	public AbstractGraphicsObject() {
+	public Curve() {
 		coordinates = new Coordinates();
-		lines = new ArrayList<AbstractLine>();
-		antialiasing = true;
 	}
 	
-
-	public void draw(CanvaGraphics g) {
-		for(AbstractLine line: lines) {
-			line.draw(g);
-		}
-	}
 
 	protected void addPoint(int x, int y) {
 		boolean pushed = false;
@@ -45,7 +26,6 @@ public abstract class AbstractGraphicsObject {
 	
 	protected void clearCoordinates() {
 		coordinates.clear();
-		lines.clear();
 	}
 	
 	protected abstract void calc();

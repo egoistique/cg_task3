@@ -1,7 +1,6 @@
-package shapes.shapes;
+package shapes.curves;
 import Jama.Matrix;
 import drawers.PixelDrawer;
-import shapes.abstracts.AbstractGraphicsObject;
 import shapes.utils.Coordinate;
 
 import java.awt.*;
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * Интерполяция методом Эрмита.
  */
-public class HermitCurve extends AbstractGraphicsObject{
+public class HermitCurve extends Curve {
 	private PixelDrawer pd;
 	//Количество значений, которые приниает параметр t
 	private static final int DEFAULT_ITERATION_COUNT	= 20;

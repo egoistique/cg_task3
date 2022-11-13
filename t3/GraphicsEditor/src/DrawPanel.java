@@ -2,9 +2,9 @@ import drawers.BresenhamLineDrawer;
 import drawers.GraphicsPixelDrawer;
 import drawers.LineDrawer;
 import functions.Functions;
-import shapes.shapes.BezierCurve;
-import shapes.shapes.HermitCurve;
-import shapes.shapes.SplineCurve;
+import shapes.curves.BezierCurve;
+import shapes.curves.HermitCurve;
+import shapes.curves.SplineCurve;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,15 +1,14 @@
 
-package shapes.shapes;
+package shapes.curves;
 import Jama.Matrix;
 import drawers.PixelDrawer;
-import shapes.abstracts.AbstractGraphicsObject;
 import shapes.utils.Coordinate;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BezierCurve extends AbstractGraphicsObject{
+public class BezierCurve extends Curve {
 	private PixelDrawer pd;
 
 	private static final int DEFAULT_ITERATION_COUNT	= 20;
