@@ -6,25 +6,23 @@ import shapes.utils.Coordinate;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Интерполяция методом Эрмита.
- */
+
 public class HermitCurve extends Curve {
 	private PixelDrawer pd;
 	//Количество значений, которые приниает параметр t
-	private static final int DEFAULT_ITERATION_COUNT	= 20;
+	private static final int DEFAULT_ITERATION_COUNT = 20;
 
 	//Начальное значение координаты X вектора касательной в начальной точке
-	private static final int DEFAULT_BEGIN_VECTOR_X		= 0;
+	private static final int DEFAULT_BEGIN_VECTOR_X	= 0;
 
 	//Начальное значение координаты Y вектора касательной в начальной точке
-	private static final int DEFAULT_BEGIN_VECTOR_Y		= 0;
+	private static final int DEFAULT_BEGIN_VECTOR_Y	= 0;
 
 	//Начальное значение координаты X вектора касательной в конечной точке
-	private static final int DEFAULT_END_VECTOR_X		= 0;
+	private static final int DEFAULT_END_VECTOR_X = 0;
 
 	//Начальное значение координаты Y вектора касательной в конечной точке
-	private static final int DEFAULT_END_VECTOR_Y		= 0;
+	private static final int DEFAULT_END_VECTOR_Y = 0;
 
 	//Матрица Эрмита
 	private static final Matrix HERMITE_MATRIX = new Matrix(new double[][] {
@@ -44,8 +42,6 @@ public class HermitCurve extends Curve {
 	//Еоличство значений, которое принимает параметр t
 	private int iterationCount;
 
-	//Информация, которая используется для вывода на экран. Значение параметра
-	//t, коодринаты x и y при данном значении параметра t
 	List<Double> tList;
 	List<Double> xList;
 	List<Double> yList;
@@ -80,9 +76,7 @@ public class HermitCurve extends Curve {
 
 
 
-	/**
-	 * Метод осуществляет вычисление координат кривой
-	 */
+
 	@Override
 	protected void calc() {
 
@@ -92,8 +86,6 @@ public class HermitCurve extends Curve {
 		xList.clear();
 		yList.clear();
 
-		//Если одна из граничных точек не установлена, то вычисление координат
-		//кривой не происходит
 		if(!beginPoint.isCorrect()) {
 			return;
 		} else if(!endPoint.isCorrect()) {

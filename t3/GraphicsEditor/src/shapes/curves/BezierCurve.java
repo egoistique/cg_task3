@@ -24,8 +24,8 @@ public class BezierCurve extends Curve {
 			{-3, 3, 0, 0},
 			{ 1, 0, 0, 0}}, 4,4);
 
-	private Coordinate beginPoint; //Начальная точка кривой
-	private Coordinate endPoint; //Конечная точка кривой
+	private Coordinate beginPoint; //Начальная точка
+	private Coordinate endPoint; //Конечная точка
 	private Coordinate beginVector; //Первая опорная точка
 	private Coordinate endVector; //Вторая опорная точка
 
@@ -61,9 +61,6 @@ public class BezierCurve extends Curve {
 //		}
 	}
 
-	/**
-	 * Метод осуществялет вычисление координат кривой Безъе
-	 */
 	@Override
 	protected void calc() {
 		clearCoordinates();
@@ -91,7 +88,7 @@ public class BezierCurve extends Curve {
 			//Вычисление параметра t
 			double t = (double)i/iterationCount;
 			tList.add(t);
-			//Вычисление вектора [t^3 t^2 t 1]
+			//Вектор [t^3 t^2 t 1]
 			Matrix tMatrix = new Matrix(new double[][] {{Math.pow(t,3), Math.pow(t,2), Math.pow(t,1), Math.pow(t,0)}}, 1, 4);
 			//Вычисление координат точки
 			Matrix point = tMatrix.times(BEZIER_MATRIX).times(hermitGeometryVector);

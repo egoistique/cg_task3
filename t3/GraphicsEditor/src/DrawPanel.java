@@ -133,8 +133,8 @@ public class DrawPanel extends JPanel {
         drawGrid(ld, converter, biG);
 
         //это если нужно чтобы было несколько функций на одном экране
-        for (int i = 0; i < Monolog.anyFunctions.size(); i++) {
-            drawAnyFunction(ld, converter, Monolog.anyFunctions.get(i));
+        for (int i = 0; i < Monolog.functions.size(); i++) {
+            drawAnyFunction(ld, converter, Monolog.functions.get(i));
         }
 
         for (int i = 0; i < Monolog.besierFunctions.size(); i++) {

@@ -15,8 +15,7 @@ public class Monolog extends JDialog {
     private JButton buttonSplines;
     private JButton buttonBezier;
     private JButton buttonClear;
-    public static Map<String, Double> params;
-    public static ArrayList<Functions> anyFunctions;
+    public static ArrayList<Functions> functions;
     public static ArrayList<Functions> besierFunctions;
     public static ArrayList<Functions> hermitFunctions;
     public static ArrayList<Functions> splineFunctions;
@@ -25,9 +24,7 @@ public class Monolog extends JDialog {
 
     public Monolog() {
         setContentPane(contentPane);
-        params = new HashMap<>();
-
-        anyFunctions = new ArrayList<>();
+        functions = new ArrayList<>();
         besierFunctions = new ArrayList<>();
         hermitFunctions = new ArrayList<>();
         splineFunctions = new ArrayList<>();
@@ -37,7 +34,7 @@ public class Monolog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 if(textField.getText() != ""){
                     Functions f = new Functions(textField.getText());
-                    anyFunctions.add(f);
+                    functions.add(f);
 
                 }
             }
@@ -78,7 +75,7 @@ public class Monolog extends JDialog {
         buttonClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                anyFunctions.clear();
+                functions.clear();
                 besierFunctions.clear();
                 hermitFunctions.clear();
                 splineFunctions.clear();
