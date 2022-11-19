@@ -277,6 +277,7 @@ public class DrawPanel extends JPanel {
                 y = y1;
             }
         }
+
         if (f.defineArg() == 'y') {
             double step = screenConverter.getWidth() / screenConverter.getsWidth();
             double x = screenConverter.getX() + 0 * step;
